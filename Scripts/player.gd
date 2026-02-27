@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	if global_position.y < -0:
+	if global_position.y < -3:
 		global_position = Vector3(0, 5, 0)
 
 func _input(event: InputEvent) -> void:
@@ -42,31 +42,28 @@ func _input(event: InputEvent) -> void:
 		%CameraAnchor.rotation_degrees.x = clampf(%CameraAnchor.rotation_degrees.x, -90.0, 90.0)
 	
 func _process(delta: float) -> void:
-	return # no gridmap yet
-	var normal: Vector3
-	var hit_point: Vector3
-	var target_block_pos: Vector3
+	var normal: Vector3            # The side of the block being looked at
+	var ray_hit_pos: Vector3       # The exact position of the collison in the ray
+	var target_block_pos: Vector3  # The center position of block being looked at
+	var placing_block_pos: Vector3 # The center position of block to be placed with right click
 	if %BlockInteractionRay.is_colliding():
-		print(%BlockInteractionRay.get_collider(0).name)
-		normal = %BlockInteractionRay.get_collision_normal(0)
-		hit_point = %BlockInteractionRay.get_collision_point(0)
-		target_block_pos = Global.world_gridmap.map_to_local(Global.world_gridmap.local_to_map(hit_point)) - normal
-		if normal == Vector3.LEFT:
-			target_block_pos += Vector3.LEFT
-		if normal == Vector3.FORWARD:
-			target_block_pos += Vector3.FORWARD
-		if normal == Vector3.DOWN:
-			target_block_pos += Vector3.DOWN
+		# Get and calculate positions
+		normal = %BlockInteractionRay.get_collision_normal() / 2
+		ray_hit_pos = %BlockInteractionRay.get_collision_point()
+		target_block_pos = Global.world_gridmap.map_to_local(Global.world_gridmap.local_to_map(ray_hit_pos - normal)) 
+		placing_block_pos = target_block_pos + (normal * 2)
 		
-		%TargetBlockOutline.global_position = target_block_pos + normal
-		%TargetBlockOutline.show()
+		# Show where a block can be placed
+		%BlockPlacingPreview.global_position = placing_block_pos
+		%BlockPlacingPreview.show()
+		
+		# Placing and breaking block
+		if Input.is_action_just_pressed("place_block"):
+			Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(placing_block_pos), 0)
+			#print(str(%BlockPlaceCheckArea3D.has_overlapping_bodies()) + ", " + str(%BlockPlaceCheckArea3D.has_overlapping_areas()))
+		
+		if Input.is_action_just_pressed("break_block"):
+			Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(target_block_pos), -1)
 	else:
-		%TargetBlockOutline.hide()
+		%BlockPlacingPreview.hide()
 	
-	if Input.is_action_just_pressed("place_block") and %BlockInteractionRay.is_colliding():
-		Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(target_block_pos + normal), 0)
-
-		print(str(%BlockPlaceCheckArea3D.has_overlapping_bodies()) + ", " + str(%BlockPlaceCheckArea3D.has_overlapping_areas()))
-		
-	if Input.is_action_just_pressed("break_block") and %BlockInteractionRay.is_colliding():
-		Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(target_block_pos), -1)

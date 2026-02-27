@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bvqmpnn2uqmdv"]
+
+[ext_resource type="ArrayMesh" uid="uid://rv1nfgydcjdn" path="res://assets/cubetest.001.obj" id="2_8a042"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbu66"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ncyw"]
+material = SubResource("StandardMaterial3D_mbu66")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxiui"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swp0a"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a042"]
+material = SubResource("StandardMaterial3D_swp0a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7s6wn"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_38iu8"]
+material = SubResource("StandardMaterial3D_7s6wn")
+
+[node name="AllBlocksMeshLibrary" type="Node3D" unique_id=132173406]
+
+[node name="red" type="MeshInstance3D" parent="." unique_id=626879777]
+mesh = SubResource("BoxMesh_2ncyw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="red" unique_id=58610436]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="red/StaticBody3D" unique_id=478401434]
+shape = SubResource("BoxShape3D_fxiui")
+
+[node name="green" type="MeshInstance3D" parent="." unique_id=140852593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+mesh = SubResource("BoxMesh_8a042")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="green" unique_id=419274144]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="green/StaticBody3D" unique_id=697976457]
+shape = SubResource("BoxShape3D_fxiui")
+
+[node name="blue" type="MeshInstance3D" parent="." unique_id=450880691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("BoxMesh_38iu8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="blue" unique_id=626095423]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blue/StaticBody3D" unique_id=2003994785]
+shape = SubResource("BoxShape3D_fxiui")
+
+[node name="test" type="MeshInstance3D" parent="." unique_id=1386800617]
+transform = Transform3D(1, 0, 0, 0, 0.99997324, -0.0073128645, 0, 0.0073128645, 0.99997324, 6, 0, 0)
+mesh = ExtResource("2_8a042")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="test" unique_id=247866443]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="test/StaticBody3D" unique_id=1204496177]
+shape = SubResource("BoxShape3D_fxiui")
