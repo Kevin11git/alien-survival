@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://nku7lwef1xbh"]
+
+[ext_resource type="Script" uid="uid://brujisnsgidat" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://bsngkqi4vigjo" path="res://assets/crosshair.png" id="2_cvnsp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
+radius = 0.305
+height = 1.785
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+radius = 0.305
+height = 1.785
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvnsp"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgqql"]
+transparency = 1
+albedo_color = Color(0, 0.831373, 1, 0.25098)
+metallic = 1.0
+uv1_scale = Vector3(3, 2, 2)
+uv1_offset = Vector3(1, 0, 0)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_fkybt"]
+material = SubResource("StandardMaterial3D_vgqql")
+
+[node name="Player" type="CharacterBody3D" unique_id=1074528158]
+collision_mask = 3
+script = ExtResource("1_v0iea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=212866535]
+mesh = SubResource("CapsuleMesh_cvnsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2092794385]
+unique_name_in_owner = true
+shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="BlockPlaceCheckArea3D" type="Area3D" parent="." unique_id=1885831668]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockPlaceCheckArea3D" unique_id=1349819249]
+shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="CameraAnchor" type="Node3D" parent="." unique_id=1614382966]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor" unique_id=289880131]
+current = true
+fov = 90.0
+
+[node name="BlockInteractionRay" type="ShapeCast3D" parent="CameraAnchor/Camera3D" unique_id=235637339]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_cvnsp")
+target_position = Vector3(0, 0, -4.5)
+collision_mask = 2
+
+[node name="UI" type="Control" parent="." unique_id=1593747373]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="UI" unique_id=888241500]
+modulate = Color(1, 1, 1, 0.5019608)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+scale = Vector2(0.3, 0.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_cvnsp")
+
+[node name="TargetBlockOutline" type="MeshInstance3D" parent="." unique_id=714663087]
+unique_name_in_owner = true
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, -1.68816)
+top_level = true
+visible = false
+mesh = SubResource("BoxMesh_fkybt")
