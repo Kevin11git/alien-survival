@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brujisnsgidat" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://bsngkqi4vigjo" path="res://assets/crosshair.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bt5ihyfgyayjc" path="res://assets/hotbarUI.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cnxit4qr4hmo8" path="res://icon.svg" id="4_vgqql"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 radius = 0.305
@@ -11,16 +13,11 @@ height = 1.785
 radius = 0.305
 height = 1.785
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgqql"]
-transparency = 1
-albedo_color = Color(0, 0.831373, 1, 0.25098)
-metallic = 1.0
-uv1_scale = Vector3(3, 2, 2)
-uv1_offset = Vector3(1, 0, 0)
-texture_filter = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(1, 1, 516, 133)
 
-[sub_resource type="BoxMesh" id="BoxMesh_fkybt"]
-material = SubResource("StandardMaterial3D_vgqql")
+[sub_resource type="BoxMesh" id="BoxMesh_cvnsp"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1074528158]
 collision_mask = 3
@@ -81,9 +78,79 @@ scale = Vector2(0.3, 0.3)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_cvnsp")
 
+[node name="Hotbar" type="TextureRect" parent="UI" unique_id=479037936]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -259.0
+offset_top = -154.0
+offset_right = 259.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_vgqql")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Hotbar" unique_id=488289341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hotbar/MarginContainer" unique_id=896044048]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="HotbarItem1" type="TextureRect" parent="UI/Hotbar/MarginContainer/HBoxContainer" unique_id=115405406]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+expand_mode = 3
+
+[node name="SelectedHotbarItem" type="ColorRect" parent="UI/Hotbar/MarginContainer/HBoxContainer/HotbarItem1" unique_id=1186599836]
+unique_name_in_owner = true
+show_behind_parent = true
+custom_minimum_size = Vector2(114, 114)
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 114.0
+scale = Vector2(1.088, 1.088)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 0
+color = Color(0, 1, 1, 1)
+
+[node name="HotbarItem2" type="TextureRect" parent="UI/Hotbar/MarginContainer/HBoxContainer" unique_id=42613193]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+expand_mode = 3
+
+[node name="HotbarItem3" type="TextureRect" parent="UI/Hotbar/MarginContainer/HBoxContainer" unique_id=1402264720]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+expand_mode = 3
+
+[node name="HotbarItem4" type="TextureRect" parent="UI/Hotbar/MarginContainer/HBoxContainer" unique_id=841529039]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+expand_mode = 3
+
 [node name="BlockPlacingPreview" type="MeshInstance3D" parent="." unique_id=714663087]
 unique_name_in_owner = true
-transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, -1.68816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.68816)
 top_level = true
-visible = false
-mesh = SubResource("BoxMesh_fkybt")
+transparency = 0.5
+cast_shadow = 0
+mesh = SubResource("BoxMesh_cvnsp")

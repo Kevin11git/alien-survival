@@ -6,8 +6,32 @@ const SPEED = 4.0
 const JUMP_VELOCITY = 5
 const GRAVITY_MULTIPLIER = 1.1
 
+var selected_block: int = 0:
+	set(val):
+		selected_block = wrapi(val, 0, Global.world_gridmap.mesh_library.get_item_list().size())
+		update_selected_block()
+
+func update_selected_block():
+	if not Global.world_gridmap:
+		printerr("Gridmap not set!")
+		return
+	%BlockPlacingPreview.mesh = Global.world_gridmap.mesh_library.get_item_mesh(selected_block)
+	%SelectedHotbarItem.reparent(get_node("%HotbarItem" + str(selected_block + 1)), false)
+	
+
 func _ready() -> void:
+	%Hotbar.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# Wait for gridmap to be ready
+	await get_tree().process_frame
+	# setup hotbar
+	for i in 4:
+		var hotbar_item: TextureRect = get_node("%HotbarItem" + str(i + 1))
+		hotbar_item.texture = Global.world_gridmap.mesh_library.get_item_preview(i)
+	%Hotbar.show()
+	selected_block = selected_block # run setter
+	
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -40,7 +64,25 @@ func _input(event: InputEvent) -> void:
 		$BlockPlaceCheckArea3D/CollisionShape3D.global_rotation_degrees.y = 0
 		%CameraAnchor.rotation_degrees.x += (-event.relative.y / 10) * sensitivity
 		%CameraAnchor.rotation_degrees.x = clampf(%CameraAnchor.rotation_degrees.x, -90.0, 90.0)
-	
+		
+	# Select block from hotbar
+	# using number keys
+	if Input.is_physical_key_pressed(KEY_1):
+		selected_block = 0
+	if Input.is_physical_key_pressed(KEY_2):
+		selected_block = 1
+	if Input.is_physical_key_pressed(KEY_3):
+		selected_block = 2
+	if Input.is_physical_key_pressed(KEY_4):
+		selected_block = 3
+	# using scroll wheel
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			selected_block += 1
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP :
+			selected_block -= 1
+
+
 func _process(delta: float) -> void:
 	var normal: Vector3            # The side of the block being looked at
 	var ray_hit_pos: Vector3       # The exact position of the collison in the ray
@@ -59,7 +101,7 @@ func _process(delta: float) -> void:
 		
 		# Placing and breaking block
 		if Input.is_action_just_pressed("place_block"):
-			Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(placing_block_pos), 0)
+			Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(placing_block_pos), selected_block)
 			#print(str(%BlockPlaceCheckArea3D.has_overlapping_bodies()) + ", " + str(%BlockPlaceCheckArea3D.has_overlapping_areas()))
 		
 		if Input.is_action_just_pressed("break_block"):
