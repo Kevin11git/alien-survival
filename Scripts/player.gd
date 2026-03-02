@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @export var sensitivity: float = 1.0
@@ -28,6 +29,7 @@ func update_selected_block():
 	
 
 func _ready() -> void:
+	Global.player = self
 	%Hotbar.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Wait for gridmap to be ready

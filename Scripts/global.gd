@@ -2,6 +2,7 @@ extends Node
 
 
 var world_gridmap: GridMap = null
+var player: Player = null
 
 func  _ready() -> void:
 	get_viewport().get_window().mode = Window.MODE_FULLSCREEN
