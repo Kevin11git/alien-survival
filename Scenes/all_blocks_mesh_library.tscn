@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvqmpnn2uqmdv"]
 
-[ext_resource type="ArrayMesh" uid="uid://rv1nfgydcjdn" path="res://assets/cubetest.001.obj" id="2_8a042"]
+[ext_resource type="ArrayMesh" uid="uid://rv1nfgydcjdn" path="res://assets/models/blocks/cubetest/cubetest.001.obj" id="2_8a042"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbu66"]
 albedo_color = Color(1, 0, 0, 1)

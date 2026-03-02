@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" format=4 uid="uid://bbpe0gjtb6mu7"]
 
-[ext_resource type="Texture2D" uid="uid://bquuyt25aklm" path="res://assets/cubetest.png" id="1_j7xxv"]
+[ext_resource type="Texture2D" uid="uid://bquuyt25aklm" path="res://assets/models/blocks/cubetest/cubetest.png" id="1_j7xxv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbu66"]
 albedo_color = Color(1, 0, 0, 1)

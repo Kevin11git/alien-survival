@@ -5,7 +5,7 @@ const GRAVITY_MULTIPLIER = 1.1
 
 @export var speed = 1
 @export var speed_variance = 0.0
-@onready var model: MeshInstance3D = $MeshInstance3D
+@onready var model: Node3D = $model
 
 var spawn: Vector3
 

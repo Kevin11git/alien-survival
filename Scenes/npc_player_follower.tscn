@@ -1,25 +1,21 @@
 [gd_scene format=3 uid="uid://b3vqc34qk5oux"]
 
 [ext_resource type="Script" uid="uid://c2kle8wyqmeya" path="res://Scripts/npc_player_follower.gd" id="1_ttdj8"]
+[ext_resource type="PackedScene" uid="uid://281k8jx37oet" path="res://assets/models/meep/Meep.glb" id="2_uonvc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0r0l"]
-radius = 0.3
-height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttdj8"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_uonvc"]
-material = SubResource("StandardMaterial3D_ttdj8")
-radius = 0.3
-height = 1.5
+radius = 0.45
+height = 1.4362793
 
 [node name="NpcPlayerFollower" type="CharacterBody3D" unique_id=1731011184]
 collision_mask = 3
 script = ExtResource("1_ttdj8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1240829326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.28186035, 0)
 shape = SubResource("CapsuleShape3D_g0r0l")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1702005417]
-mesh = SubResource("CapsuleMesh_uonvc")
+[node name="model" type="Node3D" parent="." unique_id=1931396174]
+
+[node name="Meep2" parent="model" unique_id=1659941725 instance=ExtResource("2_uonvc")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1, 0)
