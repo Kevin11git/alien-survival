@@ -147,10 +147,13 @@ layout_mode = 2
 texture = ExtResource("4_vgqql")
 expand_mode = 3
 
-[node name="BlockPlacingPreview" type="MeshInstance3D" parent="." unique_id=714663087]
+[node name="BlockPlacingPreviewAnchor" type="Node3D" parent="." unique_id=693592811]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.68816)
 top_level = true
+
+[node name="BlockPlacingPreview" type="MeshInstance3D" parent="BlockPlacingPreviewAnchor" unique_id=714663087]
+unique_name_in_owner = true
 transparency = 0.5
 cast_shadow = 0
 mesh = SubResource("BoxMesh_cvnsp")

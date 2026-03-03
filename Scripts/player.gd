@@ -16,7 +16,7 @@ var selected_block: int = 0:
 var selected_rotation: float = 0: # (In degrees)
 	set(val):
 		selected_rotation = fposmod(val, 360.0)
-		%BlockPlacingPreview.rotation_degrees.y = selected_rotation
+		%BlockPlacingPreviewAnchor.rotation_degrees.y = selected_rotation
 
 func update_selected_block():
 	if not Global.world_gridmap:
@@ -25,8 +25,15 @@ func update_selected_block():
 	
 	selected_rotation = 0 # Reset rotation
 	%BlockPlacingPreview.mesh = Global.world_gridmap.mesh_library.get_item_mesh(selected_block)
-	%SelectedHotbarItem.reparent(get_node("%HotbarItem" + str(selected_block + 1)), false)
-	
+	# Some block meshes are not fully centered
+	%BlockPlacingPreview.transform = Global.world_gridmap.mesh_library.get_item_mesh_transform(selected_block)
+	var hotbar_item = get_node_or_null("%HotbarItem" + str(selected_block + 1))
+	if hotbar_item:
+		%SelectedHotbarItem.reparent(get_node("%HotbarItem" + str(selected_block + 1)), false)
+		%SelectedHotbarItem.show()
+	else:
+		%SelectedHotbarItem.hide()
+
 
 func _ready() -> void:
 	Global.player = self
@@ -114,7 +121,7 @@ func process_block_interaction():
 		placing_block_pos = target_block_pos + (normal * 2)
 		
 		# Show where a block can be placed
-		%BlockPlacingPreview.global_position = placing_block_pos
+		%BlockPlacingPreviewAnchor.global_position = placing_block_pos
 		%BlockPlacingPreview.show()
 		
 		# Placing and breaking block

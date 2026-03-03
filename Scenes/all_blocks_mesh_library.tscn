@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bvqmpnn2uqmdv"]
+[gd_scene format=4 uid="uid://bvqmpnn2uqmdv"]
 
 [ext_resource type="ArrayMesh" uid="uid://rv1nfgydcjdn" path="res://assets/models/blocks/cubetest/cubetest.001.obj" id="2_8a042"]
 
@@ -22,6 +22,43 @@ albedo_color = Color(0, 0, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_38iu8"]
 material = SubResource("StandardMaterial3D_7s6wn")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxy2m"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5bud0"]
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -1, 2, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AgABAAUAAAACAAUAAgAGAAEAAAAFAAMAAwAFAAEABwACAAAABwAAAAMABwAGAAIAAwABAAQABwADAAQABAABAAYABAAGAAcA"),
+"lods": [1.5368569, PackedByteArray("AAABAAIAAwACAAEAAAACAAMAAwABAAQABAABAAAAAAADAAQA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AAAAAAAAAAAAAAAA/////wAA/////wAAAAD//wAAAAAAAAAA//8AAAAAAAAAAP//AAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_efryr"]
+resource_name = "2x2cube_cubetest"
+_surfaces = [{
+"aabb": AABB(-1, -0.5, -1, 2, 1, 1),
+"attribute_data": PackedByteArray("QlQFVLynjABCVAVUvKd/p7ynBVRCVAVUvKcFVLynf6dCVAVUvKeMALynBVRCVIwAQlR/p7ynBVRCVIwAQlR/pw=="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("CAAJAAoACAALAAkADAACAAAAAAACAA0ADAAOAAIAAAANAAQAAwAOAAwABAANAAEAAwABAA4ABAABAAMADwAGAAcADwAFAAYA"),
+"lods": [1.5368569, PackedByteArray("AAABAAIAAwABAAAAAAACAAQABAABAAMABAACAAEABQAGAAcA")],
+"material": SubResource("StandardMaterial3D_rxy2m"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/////////18AAAAAAABUFgAA//////9f//8AAAAAVBb/////AAD/3/////////+//////wAA/7///wAAAAD/vwAA////////AAAAAAAA//8AAP//AAD//wAAAAD///////8AAP//AjoAAP//AAD/3wAAAAD//wI6//8AAP///7////9/+kr6Sv///3/6SvpK////f/9/AAD/fwAA/38AAP8//3//P/9//z//f/8//38AYwBj////fwBjAGP/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5bud0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ncyw"]
+size = Vector3(2, 1, 1)
+
 [node name="AllBlocksMeshLibrary" type="Node3D" unique_id=132173406]
 
 [node name="red" type="MeshInstance3D" parent="." unique_id=626879777]
@@ -34,7 +71,6 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_fxiui")
 
 [node name="green" type="MeshInstance3D" parent="." unique_id=140852593]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 mesh = SubResource("BoxMesh_8a042")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="green" unique_id=419274144]
@@ -44,7 +80,6 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_fxiui")
 
 [node name="blue" type="MeshInstance3D" parent="." unique_id=450880691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 mesh = SubResource("BoxMesh_38iu8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="blue" unique_id=626095423]
@@ -54,7 +89,6 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_fxiui")
 
 [node name="test" type="MeshInstance3D" parent="." unique_id=1386800617]
-transform = Transform3D(1, 0, 0, 0, 0.99997324, -0.0073128645, 0, 0.0073128645, 0.99997324, 6, 0, 0)
 mesh = ExtResource("2_8a042")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="test" unique_id=247866443]
@@ -62,3 +96,14 @@ collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="test/StaticBody3D" unique_id=1204496177]
 shape = SubResource("BoxShape3D_fxiui")
+
+[node name="1x2_horizontal" type="MeshInstance3D" parent="." unique_id=306091399]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.5, -0.5, 0)
+mesh = SubResource("ArrayMesh_efryr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="1x2_horizontal" unique_id=1785572511]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1x2_horizontal/StaticBody3D" unique_id=732308662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_2ncyw")
