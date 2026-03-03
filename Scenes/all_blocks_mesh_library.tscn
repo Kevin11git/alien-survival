@@ -59,6 +59,43 @@ shadow_mesh = SubResource("ArrayMesh_5bud0")
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ncyw"]
 size = Vector3(2, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efijt"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m4tql"]
+_surfaces = [{
+"aabb": AABB(1.1920929e-07, -0.50000006, -0.5000002, 1.9999999, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AgABAAUAAAACAAUAAgAGAAEAAAAFAAMAAwAFAAEABwACAAAABwAAAAMABwAGAAIAAwABAAQABwADAAQABAABAAYABAAGAAcA"),
+"lods": [1.5368569, PackedByteArray("AAABAAIAAwACAAEAAAACAAMAAwABAAQABAABAAAAAAADAAQA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////////AAAAAAAAAAAAAAAA/////wAA/////wAAAAD//wAAAAAAAAAA//8AAAAAAAAAAP//AAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fm8mp"]
+resource_name = "2xV_cubetest"
+_surfaces = [{
+"aabb": AABB(1.1920929e-07, -0.50000006, -0.5000002, 1.9999999, 1, 1),
+"attribute_data": PackedByteArray("QlQFVLynjABCVAVUvKd/p7ynBVRCVAVUvKcFVLynf6dCVAVUvKeMALynBVRCVIwAQlR/p7ynBVRCVIwAQlR/pw=="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("CAAJAAoACAALAAkADAACAAAAAAACAA0ADAAOAAIAAAANAAQAAwAOAAwABAANAAEAAwABAA4ABAABAAMADwAGAAcADwAFAAYA"),
+"lods": [1.5368569, PackedByteArray("AAABAAIAAwABAAAAAAACAAQABAABAAMABAACAAEABQAGAAcA")],
+"material": SubResource("StandardMaterial3D_efijt"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/////////18AAAAAAABUFgAA//////9f//8AAAAAVBb/////AAD/3/////////+//////wAA/7///wAAAAD/vwAA////////AAAAAAAA//8AAP//AAD//wAAAAD///////8AAP//AjoAAP//AAD/3wAAAAD//wI6//8AAP///7////9/+kr6Sv///3/6SvpK////f/9/AAD/fwAA/38AAP8//3//P/9//z//f/8//38AYwBj////fwBjAGP/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_m4tql")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8a042"]
+size = Vector3(2, 1, 1)
+
 [node name="AllBlocksMeshLibrary" type="Node3D" unique_id=132173406]
 
 [node name="red" type="MeshInstance3D" parent="." unique_id=626879777]
@@ -107,3 +144,14 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="1x2_horizontal/StaticBody3D" unique_id=732308662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_2ncyw")
+
+[node name="1x2_vertical" type="MeshInstance3D" parent="." unique_id=1825369850]
+transform = Transform3D(2.3841858e-07, -2.3841858e-07, 1, 1, 0, -2.3841858e-07, 0, 1, 2.3841858e-07, 0, -0.5, 0)
+mesh = SubResource("ArrayMesh_fm8mp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="1x2_vertical" unique_id=477834591]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1x2_vertical/StaticBody3D" unique_id=334422958]
+transform = Transform3D(1, 0, 1.3552527e-20, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+shape = SubResource("BoxShape3D_8a042")
