@@ -50,6 +50,11 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -4.5)
 collision_mask = 2
 
+[node name="InteractionRay" type="RayCast3D" parent="CameraAnchor/Camera3D" unique_id=1546389836]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -4.5)
+collision_mask = 4
+
 [node name="UI" type="Control" parent="." unique_id=1593747373]
 layout_mode = 3
 anchors_preset = 15

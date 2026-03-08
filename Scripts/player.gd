@@ -6,6 +6,7 @@ extends CharacterBody3D
 const SPEED = 4.0
 const JUMP_VELOCITY = 5
 const GRAVITY_MULTIPLIER = 1.1
+const MASS_KG = 80.0
 
 var selected_block: int = 0:
 	set(val):
@@ -68,11 +69,32 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	_push_away_rigid_bodies()
 	move_and_slide()
 	
 	if global_position.y < -3:
 		global_position = Vector3(0, 5, 0)
+
+func _push_away_rigid_bodies():
+	for i in get_slide_collision_count():
+		var c := get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			var push_dir = -c.get_normal()
+			# How much velocity the object needs to increase to match player velocity in the push direction
+			var velocity_diff_in_push_dir = self.velocity.dot(push_dir) - c.get_collider().linear_velocity.dot(push_dir)
+			# Only count velocity towards push dir, away from character
+			velocity_diff_in_push_dir = max(0., velocity_diff_in_push_dir)
+			# Objects with more mass than us should be harder to push. But doesn't really make sense to push faster than we are going
+			var mass_ratio = min(1., MASS_KG / c.get_collider().mass)
+			# Optional add: Don't push object at all if it's 4x heavier or more
+			if mass_ratio < 0.25:
+				continue
+			# Don't push object from above/below
+			push_dir.y = 0
+			# 5.0 is a magic number, adjust to your needs
+			var push_force = mass_ratio / 5.0
+			c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -107,6 +129,14 @@ func _process(delta: float) -> void:
 	
 	# process block breaking, placing and showing %BlockPlacingPreview
 	process_block_interaction()
+	
+	# Interaction logic
+	if %InteractionRay.is_colliding():
+		%InteractionRay.get_collider().show_outline()
+		if Input.is_action_just_pressed("place_block"):
+			%InteractionRay.get_collider().queue_free()
+			var hotbar_item: TextureRect = get_node("%HotbarItem" + str(clamp(selected_block	, 0, 3) + 1))
+			hotbar_item.texture = load("res://assets/can_icon.png")
 
 func process_block_interaction():
 	var normal: Vector3            # The side of the block being looked at
@@ -125,7 +155,7 @@ func process_block_interaction():
 		%BlockPlacingPreview.show()
 		
 		# Placing and breaking block
-		if Input.is_action_just_pressed("place_block"):
+		if Input.is_action_just_pressed("place_block") and not %InteractionRay.is_colliding():
 			Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(placing_block_pos), selected_block, rotation_to_gridmap_orientation(selected_rotation))
 			#print(str(%BlockPlaceCheckArea3D.has_overlapping_bodies()) + ", " + str(%BlockPlaceCheckArea3D.has_overlapping_areas()))
 		
