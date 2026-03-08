@@ -6,7 +6,7 @@ func _ready() -> void:
 	spawn = global_position
 
 func _physics_process(delta: float) -> void:
-	if global_position.y < -5:
+	if global_position.y < -10:
 		global_position = spawn
 		global_rotation  = Vector3.ZERO
 		linear_velocity  = Vector3.ZERO

@@ -1,26 +1,30 @@
 [gd_scene format=4 uid="uid://bvqmpnn2uqmdv"]
 
-[ext_resource type="ArrayMesh" uid="uid://rv1nfgydcjdn" path="res://assets/models/blocks/cubetest/cubetest.001.obj" id="2_8a042"]
+[ext_resource type="ArrayMesh" uid="uid://3uicd2rpi2ky" path="res://assets/models/blocks/cubetest/cubetest.obj" id="1_fxiui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbu66"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2ncyw"]
 material = SubResource("StandardMaterial3D_mbu66")
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxiui"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swp0a"]
 albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8a042"]
 material = SubResource("StandardMaterial3D_swp0a")
+size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7s6wn"]
 albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_38iu8"]
 material = SubResource("StandardMaterial3D_7s6wn")
+size = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxy2m"]
 
@@ -100,6 +104,7 @@ size = Vector3(2, 1, 1)
 
 [node name="red" type="MeshInstance3D" parent="." unique_id=626879777]
 mesh = SubResource("BoxMesh_2ncyw")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="red" unique_id=58610436]
 collision_layer = 2
@@ -109,6 +114,7 @@ shape = SubResource("BoxShape3D_fxiui")
 
 [node name="green" type="MeshInstance3D" parent="." unique_id=140852593]
 mesh = SubResource("BoxMesh_8a042")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="green" unique_id=419274144]
 collision_layer = 2
@@ -118,6 +124,7 @@ shape = SubResource("BoxShape3D_fxiui")
 
 [node name="blue" type="MeshInstance3D" parent="." unique_id=450880691]
 mesh = SubResource("BoxMesh_38iu8")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="blue" unique_id=626095423]
 collision_layer = 2
@@ -126,7 +133,8 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_fxiui")
 
 [node name="test" type="MeshInstance3D" parent="." unique_id=1386800617]
-mesh = ExtResource("2_8a042")
+mesh = ExtResource("1_fxiui")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="test" unique_id=247866443]
 collision_layer = 2
@@ -135,8 +143,9 @@ collision_layer = 2
 shape = SubResource("BoxShape3D_fxiui")
 
 [node name="1x2_horizontal" type="MeshInstance3D" parent="." unique_id=306091399]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0.5, -0.5, 0)
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 1, -1, 0)
 mesh = SubResource("ArrayMesh_efryr")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="1x2_horizontal" unique_id=1785572511]
 collision_layer = 2
@@ -146,8 +155,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_2ncyw")
 
 [node name="1x2_vertical" type="MeshInstance3D" parent="." unique_id=1825369850]
-transform = Transform3D(2.3841858e-07, -2.3841858e-07, 1, 1, 0, -2.3841858e-07, 0, 1, 2.3841858e-07, 0, -0.5, 0)
+transform = Transform3D(4.7683713e-07, -3.894144e-07, 2, 2, -8.742278e-08, -4.7683716e-07, 8.742287e-08, 2, 3.8941437e-07, 0, -1, 0)
 mesh = SubResource("ArrayMesh_fm8mp")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="1x2_vertical" unique_id=477834591]
 collision_layer = 2

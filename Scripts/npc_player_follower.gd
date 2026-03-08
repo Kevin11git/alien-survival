@@ -1,9 +1,9 @@
 class_name Enemy
 extends CharacterBody3D
 
-const GRAVITY_MULTIPLIER = 1.1
+const GRAVITY_MULTIPLIER = 1.0
 
-@export var speed = 1
+@export var speed = 2
 @export var speed_variance = 0.0
 @export var mass_kg = 50.0
 @onready var model: Node3D = $model
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += (get_gravity() * GRAVITY_MULTIPLIER) * delta
+		velocity += (get_gravity() * 1.1 * GRAVITY_MULTIPLIER) * delta
 	
 	if not Global.player: return
 	var player: Player = Global.player

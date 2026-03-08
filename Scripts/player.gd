@@ -3,9 +3,9 @@ extends CharacterBody3D
 
 @export var sensitivity: float = 1.0
 
-const SPEED = 4.0
-const JUMP_VELOCITY = 5
-const GRAVITY_MULTIPLIER = 1.1
+const SPEED = 8.0
+const JUMP_VELOCITY = 10
+const GRAVITY_MULTIPLIER = 1.0
 const MASS_KG = 80.0
 
 var selected_block: int = 0:
@@ -54,7 +54,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += (get_gravity() * GRAVITY_MULTIPLIER) * delta
+		velocity += (get_gravity() * 1.1 * GRAVITY_MULTIPLIER) * delta
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
@@ -73,8 +73,8 @@ func _physics_process(delta: float) -> void:
 	_push_away_rigid_bodies()
 	move_and_slide()
 	
-	if global_position.y < -3:
-		global_position = Vector3(0, 5, 0)
+	if global_position.y < -12:
+		global_position = Vector3(0, 6, 0)
 
 func _push_away_rigid_bodies():
 	for i in get_slide_collision_count():
@@ -145,7 +145,7 @@ func process_block_interaction():
 	var placing_block_pos: Vector3 # The center position of block to be placed with right click
 	if %BlockInteractionRay.is_colliding():
 		# Get and calculate positions
-		normal = %BlockInteractionRay.get_collision_normal() / 2
+		normal = %BlockInteractionRay.get_collision_normal()
 		ray_hit_pos = %BlockInteractionRay.get_collision_point()
 		target_block_pos = Global.world_gridmap.map_to_local(Global.world_gridmap.local_to_map(ray_hit_pos - normal)) 
 		placing_block_pos = target_block_pos + (normal * 2)

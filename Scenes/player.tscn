@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cnxit4qr4hmo8" path="res://icon.svg" id="4_vgqql"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
-radius = 0.305
-height = 1.785
+radius = 0.61
+height = 3.57
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
-radius = 0.305
-height = 1.785
+radius = 0.61
+height = 3.57
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("3_6t5aa")
@@ -39,7 +39,7 @@ shape = SubResource("CapsuleShape3D_cvnsp")
 
 [node name="CameraAnchor" type="Node3D" parent="." unique_id=1614382966]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraAnchor" unique_id=289880131]
 current = true
@@ -47,12 +47,12 @@ fov = 90.0
 
 [node name="BlockInteractionRay" type="RayCast3D" parent="CameraAnchor/Camera3D" unique_id=125782248]
 unique_name_in_owner = true
-target_position = Vector3(0, 0, -4.5)
+target_position = Vector3(0, 0, -9)
 collision_mask = 2
 
 [node name="InteractionRay" type="RayCast3D" parent="CameraAnchor/Camera3D" unique_id=1546389836]
 unique_name_in_owner = true
-target_position = Vector3(0, 0, -4.5)
+target_position = Vector3(0, 0, -9)
 collision_mask = 4
 
 [node name="UI" type="Control" parent="." unique_id=1593747373]
