@@ -26,8 +26,10 @@ func update_selected_block():
 	
 	selected_rotation = 0 # Reset rotation
 	%BlockPlacingPreview.mesh = Global.world_gridmap.mesh_library.get_item_mesh(selected_block)
+	%ItemInHand.mesh = Global.world_gridmap.mesh_library.get_item_mesh(selected_block)
 	# Some block meshes are not fully centered
 	%BlockPlacingPreview.transform = Global.world_gridmap.mesh_library.get_item_mesh_transform(selected_block)
+	%ItemInHand.transform = Global.world_gridmap.mesh_library.get_item_mesh_transform(selected_block)
 	var hotbar_item = get_node_or_null("%HotbarItem" + str(selected_block + 1))
 	if hotbar_item:
 		%SelectedHotbarItem.reparent(get_node("%HotbarItem" + str(selected_block + 1)), false)
@@ -126,7 +128,9 @@ func _process(delta: float) -> void:
 	# rotate block to place
 	if Input.is_action_just_pressed("rotate_block"):
 		selected_rotation += 90
-	
+	# Swing hand with left click
+	if Input.is_action_just_pressed("break_block"):
+		swing_hand()
 	# process block breaking, placing and showing %BlockPlacingPreview
 	process_block_interaction()
 	
@@ -137,6 +141,11 @@ func _process(delta: float) -> void:
 			%InteractionRay.get_collider().queue_free()
 			var hotbar_item: TextureRect = get_node("%HotbarItem" + str(clamp(selected_block	, 0, 3) + 1))
 			hotbar_item.texture = load("res://assets/can_icon.png")
+
+# Used when left clicking and placing blocks
+func swing_hand():
+	%AnimationPlayer.stop()
+	%AnimationPlayer.play("hand_anim")
 
 func process_block_interaction():
 	var normal: Vector3            # The side of the block being looked at
@@ -156,6 +165,7 @@ func process_block_interaction():
 		
 		# Placing and breaking block
 		if Input.is_action_just_pressed("place_block") and not %InteractionRay.is_colliding():
+			swing_hand()
 			Global.world_gridmap.set_cell_item(Global.world_gridmap.local_to_map(placing_block_pos), selected_block, rotation_to_gridmap_orientation(selected_rotation))
 			#print(str(%BlockPlaceCheckArea3D.has_overlapping_bodies()) + ", " + str(%BlockPlaceCheckArea3D.has_overlapping_areas()))
 		

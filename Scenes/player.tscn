@@ -2,8 +2,37 @@
 
 [ext_resource type="Script" uid="uid://brujisnsgidat" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://bsngkqi4vigjo" path="res://assets/crosshair.png" id="2_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://cbnmoidhx4qrq" path="res://assets/models/MC/MCRiggedFPS.glb" id="2_fkybt"]
 [ext_resource type="Texture2D" uid="uid://bt5ihyfgyayjc" path="res://assets/hotbarUI.png" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cnxit4qr4hmo8" path="res://icon.svg" id="4_vgqql"]
+
+[sub_resource type="Animation" id="Animation_x3wgy"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraAnchor/MCRiggedFPS/metarig/Skeleton3D:shoulder.L")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.078018, 0.480863, -0.742866, 0.459167)
+
+[sub_resource type="Animation" id="Animation_fkybt"]
+resource_name = "hand_anim"
+length = 0.3
+step = 0.01
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraAnchor/MCRiggedFPS/metarig/Skeleton3D:shoulder.L")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.078018, 0.480863, -0.742866, 0.459167, 0.02, 1, 0.19228527, -0.37522954, 0.73081875, -0.53678036, 0.1, 1, -0.30071, 0.258195, -0.696566, 0.598084, 0.2, 1, 0.19228527, -0.37522954, 0.73081875, -0.53678036, 0.3, 1, -0.078018, 0.480863, -0.742866, 0.459167)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3wgy"]
+_data = {
+&"RESET": SubResource("Animation_x3wgy"),
+&"hand_anim": SubResource("Animation_fkybt")
+}
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 radius = 0.61
@@ -13,15 +42,23 @@ height = 3.57
 radius = 0.61
 height = 3.57
 
+[sub_resource type="BoxMesh" id="BoxMesh_fkybt"]
+size = Vector3(2, 2, 2)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("3_6t5aa")
 region = Rect2(1, 1, 516, 133)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cvnsp"]
+size = Vector3(2, 2, 2)
 
 [node name="Player" type="CharacterBody3D" unique_id=1074528158]
 collision_mask = 3
 script = ExtResource("1_v0iea")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2146703319]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_x3wgy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=212866535]
 mesh = SubResource("CapsuleMesh_cvnsp")
@@ -54,6 +91,30 @@ collision_mask = 2
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -9)
 collision_mask = 4
+
+[node name="MCRiggedFPS" parent="CameraAnchor" unique_id=315487517 instance=ExtResource("2_fkybt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4955485, -1.495869, -0.35827023)
+
+[node name="metarig" parent="CameraAnchor/MCRiggedFPS" index="0" unique_id=1008916393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1686089)
+
+[node name="Skeleton3D" parent="CameraAnchor/MCRiggedFPS/metarig" index="0" unique_id=2070305992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05154729, 0.21872967)
+bones/2/rotation = Quaternion(0.078018, -0.48086292, 0.7428659, -0.45916697)
+bones/5/position = Vector3(-0.226, 0.318, 0.016)
+bones/5/scale = Vector3(0, 0, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CameraAnchor/MCRiggedFPS/metarig/Skeleton3D" index="1" unique_id=1420906550]
+transform = Transform3D(-0.8032527, -0.18452865, -0.5663339, 0.4253059, 0.48798138, -0.7622264, 0.41701293, -0.85312545, -0.31349137, 0.28245693, 1.0103766, -0.35686266)
+bone_name = "forearm.L"
+bone_idx = 4
+
+[node name="ItemInHandAnchor" type="Node3D" parent="CameraAnchor/MCRiggedFPS/metarig/Skeleton3D/BoneAttachment3D" unique_id=267808682]
+transform = Transform3D(-0.0073746997, 0.04117712, 0.09630711, -0.08427401, 0.054998092, -0.029968292, -0.062197298, -0.079401836, 0.029186353, 0.07442933, 0.41998482, -0.07817221)
+
+[node name="ItemInHand" type="MeshInstance3D" parent="CameraAnchor/MCRiggedFPS/metarig/Skeleton3D/BoneAttachment3D/ItemInHandAnchor" unique_id=2048568242]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_fkybt")
 
 [node name="UI" type="Control" parent="." unique_id=1593747373]
 layout_mode = 3
@@ -159,6 +220,9 @@ top_level = true
 
 [node name="BlockPlacingPreview" type="MeshInstance3D" parent="BlockPlacingPreviewAnchor" unique_id=714663087]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4597764)
 transparency = 0.5
 cast_shadow = 0
 mesh = SubResource("BoxMesh_cvnsp")
+
+[editable path="CameraAnchor/MCRiggedFPS"]
