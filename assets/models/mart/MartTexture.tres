@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://fvt6jhm0l4xk"]
+
+[ext_resource type="Texture2D" uid="uid://b45a4lki0hh7u" path="res://assets/models/mart/MartRoomAsset_MartTexture3.png" id="1_oobk5"]
+
+[resource]
+resource_name = "MartTexture"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_oobk5")
+metallic = 1.0
+texture_filter = 0
