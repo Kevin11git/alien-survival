@@ -17,5 +17,5 @@ shape = SubResource("CapsuleShape3D_g0r0l")
 
 [node name="model" type="Node3D" parent="." unique_id=1931396174]
 
-[node name="Meep2" parent="model" unique_id=1659941725 instance=ExtResource("2_uonvc")]
+[node name="Meep2" parent="model" unique_id=1553950113 instance=ExtResource("2_uonvc")]
 transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, -1, 0)

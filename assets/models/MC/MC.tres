@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://biy8eytuduuqd"]
+
+[ext_resource type="Texture2D" uid="uid://xm8vwunfsin3" path="res://assets/models/MC/MCRiggedFPS_MCT.png" id="1_ny2fa"]
+
+[resource]
+resource_name = "MC"
+cull_mode = 2
+albedo_texture = ExtResource("1_ny2fa")
+roughness = 0.5
+texture_filter = 0

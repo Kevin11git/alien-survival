@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctpqfscej1pec"
-path.s3tc="res://.godot/imported/can_mytile.png-8d35743f851289823607d09ec907ccb3.s3tc.ctex"
+path="res://.godot/imported/can_mytile.png-8d35743f851289823607d09ec907ccb3.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "89469ff4d8f22688a02023302b162512"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/can/can_mytile.png"
-dest_files=["res://.godot/imported/can_mytile.png-8d35743f851289823607d09ec907ccb3.s3tc.ctex"]
+dest_files=["res://.godot/imported/can_mytile.png-8d35743f851289823607d09ec907ccb3.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

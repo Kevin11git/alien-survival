@@ -92,20 +92,18 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -9)
 collision_mask = 4
 
-[node name="MCRiggedFPS" parent="CameraAnchor" unique_id=315487517 instance=ExtResource("2_fkybt")]
+[node name="MCRiggedFPS" parent="CameraAnchor" unique_id=2001567449 instance=ExtResource("2_fkybt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4955485, -1.495869, -0.35827023)
 
-[node name="metarig" parent="CameraAnchor/MCRiggedFPS" index="0" unique_id=1008916393]
+[node name="metarig" parent="CameraAnchor/MCRiggedFPS" index="0" unique_id=755801409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1686089)
 
-[node name="Skeleton3D" parent="CameraAnchor/MCRiggedFPS/metarig" index="0" unique_id=2070305992]
+[node name="Skeleton3D" parent="CameraAnchor/MCRiggedFPS/metarig" index="0" unique_id=226427678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05154729, 0.21872967)
 bones/2/rotation = Quaternion(0.078018, -0.48086292, 0.7428659, -0.45916697)
-bones/5/position = Vector3(-0.226, 0.318, 0.016)
-bones/5/scale = Vector3(0, 0, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="CameraAnchor/MCRiggedFPS/metarig/Skeleton3D" index="1" unique_id=1420906550]
-transform = Transform3D(-0.8032527, -0.18452865, -0.5663339, 0.4253059, 0.48798138, -0.7622264, 0.41701293, -0.85312545, -0.31349137, 0.28245693, 1.0103766, -0.35686266)
+transform = Transform3D(-0.9999998, -7.21775e-09, -3.7416816e-05, -7.7998266e-08, -0.9999998, -3.8184226e-08, -3.7401915e-05, -3.9115548e-08, 0.9999999, 0.37674606, 0.5529309, 0.004907156)
 bone_name = "forearm.L"
 bone_idx = 4
 
@@ -220,7 +218,8 @@ top_level = true
 
 [node name="BlockPlacingPreview" type="MeshInstance3D" parent="BlockPlacingPreviewAnchor" unique_id=714663087]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4597764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -7.31)
+visible = false
 transparency = 0.5
 cast_shadow = 0
 mesh = SubResource("BoxMesh_cvnsp")

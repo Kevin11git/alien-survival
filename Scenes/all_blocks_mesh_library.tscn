@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bvqmpnn2uqmdv"]
 
 [ext_resource type="ArrayMesh" uid="uid://3uicd2rpi2ky" path="res://assets/models/blocks/cubetest/cubetest.obj" id="1_fxiui"]
+[ext_resource type="Texture2D" uid="uid://bquuyt25aklm" path="res://assets/models/blocks/cubetest/cubetest.png" id="2_2ncyw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbu66"]
 albedo_color = Color(1, 0, 0, 1)
@@ -25,6 +26,10 @@ albedo_color = Color(0, 0, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_38iu8"]
 material = SubResource("StandardMaterial3D_7s6wn")
 size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxiui"]
+albedo_texture = ExtResource("2_2ncyw")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxy2m"]
 
@@ -134,6 +139,7 @@ shape = SubResource("BoxShape3D_fxiui")
 
 [node name="test" type="MeshInstance3D" parent="." unique_id=1386800617]
 mesh = ExtResource("1_fxiui")
+surface_material_override/0 = SubResource("StandardMaterial3D_fxiui")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="test" unique_id=247866443]

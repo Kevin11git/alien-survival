@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bj5s11i0mihs0"]
+
+[ext_resource type="Texture2D" uid="uid://cmoaswqhiu5he" path="res://assets/models/meep/Meep_Meak2TPixelated.png" id="1_2b6aq"]
+
+[resource]
+resource_name = "Meak"
+cull_mode = 2
+albedo_texture = ExtResource("1_2b6aq")
+roughness = 0.5
+texture_filter = 0

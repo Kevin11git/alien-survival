@@ -8,6 +8,7 @@ resource_name = "Material"
 cull_mode = 2
 albedo_texture = ExtResource("1_jqupc")
 roughness = 0.5
+texture_filter = 0
 stencil_flags = 2
 stencil_outline_thickness = 0.062
 

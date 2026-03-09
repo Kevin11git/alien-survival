@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xm8vwunfsin3"
-path.s3tc="res://.godot/imported/MCRiggedFPS_MCT.png-c883de23406088adeb7d60a1625af72a.s3tc.ctex"
+path="res://.godot/imported/MCRiggedFPS_MCT.png-c883de23406088adeb7d60a1625af72a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f7d235dd71e25a91940f6208ce971826"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/MC/MCRiggedFPS_MCT.png"
-dest_files=["res://.godot/imported/MCRiggedFPS_MCT.png-c883de23406088adeb7d60a1625af72a.s3tc.ctex"]
+dest_files=["res://.godot/imported/MCRiggedFPS_MCT.png-c883de23406088adeb7d60a1625af72a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
