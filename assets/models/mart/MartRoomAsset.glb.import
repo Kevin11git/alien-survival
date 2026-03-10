@@ -39,10 +39,40 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"MC": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/mart/MC.tres",
+"use_external/path": "uid://cx66ubvaau5ll"
+},
 "MartTexture": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://assets/models/mart/MartTexture.tres",
 "use_external/path": "uid://fvt6jhm0l4xk"
+},
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/mart/Material.tres",
+"use_external/path": "uid://kcqoieowwg3l"
+},
+"TexturetheThird1": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/mart/TexturetheThird1.tres",
+"use_external/path": "uid://rgwyahgd56f6"
+},
+"catT (1)": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/mart/catT (1).tres",
+"use_external/path": "uid://d3qa7qklfdyb2"
+},
+"light": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/mart/light.tres",
+"use_external/path": "uid://c0mxhfwnb653n"
+},
+"light2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/mart/light2.tres",
+"use_external/path": "uid://dklvboxvsqtvn"
 },
 "newT2": {
 "use_external/enabled": true,

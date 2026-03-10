@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://vcmop0u3thhc"]
+
+[ext_resource type="Texture2D" uid="uid://dce7wkldjv4sa" path="res://assets/models/mart/MartRoomAsset_newT2.png" id="1_ak4k6"]
+[ext_resource type="Texture2D" uid="uid://chnxqludm2a2y" path="res://assets/models/mart/MartRoomAsset_newT2 emmission.png" id="2_d4rwy"]
+
+[resource]
+resource_name = "newT2"
+albedo_texture = ExtResource("1_ak4k6")
+metallic = 1.0
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = ExtResource("2_d4rwy")
+texture_filter = 0

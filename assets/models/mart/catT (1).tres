@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3qa7qklfdyb2"]
+
+[ext_resource type="Texture2D" uid="uid://c2vcoq4ngwyel" path="res://assets/models/mart/MartRoomAsset_catT (1).png" id="1_3f6pt"]
+
+[resource]
+resource_name = "catT (1)"
+cull_mode = 2
+albedo_texture = ExtResource("1_3f6pt")
+metallic = 1.0
+emission_enabled = true
+texture_filter = 0

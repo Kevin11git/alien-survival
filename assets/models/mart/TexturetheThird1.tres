@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://rgwyahgd56f6"]
+
+[ext_resource type="Texture2D" uid="uid://c7mspse8467qq" path="res://assets/models/mart/MartRoomAsset_TexturetheThird1.png" id="1_ha12n"]
+
+[resource]
+resource_name = "TexturetheThird1"
+cull_mode = 2
+albedo_texture = ExtResource("1_ha12n")
+roughness = 0.5
+texture_filter = 0

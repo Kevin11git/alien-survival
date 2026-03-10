@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cx66ubvaau5ll"]
+
+[ext_resource type="Texture2D" uid="uid://ft1myvj3aeku" path="res://assets/models/mart/MartRoomAsset_MCT.png" id="1_te6y8"]
+
+[resource]
+resource_name = "MC"
+cull_mode = 2
+albedo_texture = ExtResource("1_te6y8")
+roughness = 0.5
+texture_filter = 0
